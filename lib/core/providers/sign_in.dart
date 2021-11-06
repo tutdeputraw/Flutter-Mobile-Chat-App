@@ -10,14 +10,14 @@ class SignInProvider extends ChangeNotifier {
   }
 
   void signUpOnClick(context) {
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(
-    //     builder: (context) => const SignUp(
-    //       key: Key('SignUp'),
-    //     ),
-    //   ),
-    // );
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const SignUp(
+          key: Key('SignUp'),
+        ),
+      ),
+    );
   }
 
   TextEditingController get password => _password;
