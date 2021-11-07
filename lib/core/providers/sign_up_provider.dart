@@ -5,16 +5,22 @@ class SignUpProvider extends ChangeNotifier {
   TextEditingController _email = TextEditingController();
   TextEditingController _password = TextEditingController();
 
+  SignUpProvider() {
+    print('SignUpProvider');
+  }
+
   TextEditingController get username => _username;
 
   void signInOnClick(context) {
     Navigator.pop(context);
   }
 
-  void signUpOnClick() {
-    print(username.text);
-    print(email.text);
-    print(password.text);
+  void signUpOnClick(context) {
+    SignUpHelper(context).signUp(
+      username: username.text,
+      email: email.text,
+      password: password.text,
+    );
   }
 
   set username(TextEditingController value) {

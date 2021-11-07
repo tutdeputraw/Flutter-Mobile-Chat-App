@@ -1,7 +1,7 @@
 part of '../../screens/_screen.dart';
 
-class SignIn extends StatelessWidget {
-  const SignIn({Key? key}) : super(key: key);
+class SignInScreen extends StatelessWidget {
+  const SignInScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -9,10 +9,6 @@ class SignIn extends StatelessWidget {
       create: (BuildContext context) => SignInProvider(),
       child: Consumer<SignInProvider>(
         builder: (context, value, _) => Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-          ),
           body: Container(
             padding: const EdgeInsets.all(16),
             alignment: Alignment.center,
@@ -45,7 +41,7 @@ class SignIn extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 ElevatedButton(
-                  onPressed: value.signInOnClick,
+                  onPressed: () => value.signInOnClick(context),
                   child: const Text('SIGN IN'),
                 ),
                 TextButton(

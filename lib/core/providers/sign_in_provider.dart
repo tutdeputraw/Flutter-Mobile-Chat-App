@@ -4,18 +4,19 @@ class SignInProvider extends ChangeNotifier {
   TextEditingController _email = TextEditingController();
   TextEditingController _password = TextEditingController();
 
-  void signInOnClick() {
-    print(email.text);
-    print(password.text);
+  SignInProvider(){
+    print('SignInProvider');
+  }
+
+  void signInOnClick(context) {
+    SignInHelper(context).signIn(email: email.text, password: password.text);
   }
 
   void signUpOnClick(context) {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const SignUp(
-          key: Key('SignUp'),
-        ),
+        builder: (context) => const SignUpScreen(key: Key('SignUp')),
       ),
     );
   }
