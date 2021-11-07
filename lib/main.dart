@@ -27,7 +27,7 @@ class App extends StatelessWidget {
               print('Navigator: ' + Navigator.of(context).toString());
               switch (value.getAppState) {
                 case state.authorize:
-                  return const HomepageScreen();
+                  return const InitScreen();
                 case state.unauthorize:
                   return const SignInScreen();
                 default:

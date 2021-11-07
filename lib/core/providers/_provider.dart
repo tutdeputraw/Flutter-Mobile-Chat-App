@@ -1,3 +1,4 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/core/helpers/_helpers.dart';
@@ -12,3 +13,5 @@ part 'sign_up_provider.dart';
 part 'homepage_provider.dart';
 
 part 'state_provider.dart';
+
+part 'bottom_navigation_provider.dart';
