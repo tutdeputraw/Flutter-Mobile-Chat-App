@@ -24,7 +24,6 @@ class App extends StatelessWidget {
         home: Scaffold(
           body: Consumer<UserStateProvider>(builder: (context, value, _) {
             if (value.getAppState != null) {
-              print('Navigator: ' + Navigator.of(context).toString());
               switch (value.getAppState) {
                 case state.authorize:
                   return const InitScreen();

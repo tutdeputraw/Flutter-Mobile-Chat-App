@@ -1,13 +1,14 @@
 part of '../../screens/_screen.dart';
 
-class HomepageScreen extends StatelessWidget {
-  const HomepageScreen({Key? key}) : super(key: key);
+class ChatScreen extends StatelessWidget {
+  const ChatScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('HOMEPAGE'),
+        backgroundColor: Colors.transparent,
+        title: const Text('CHAT'),
         centerTitle: true,
         automaticallyImplyLeading: false,
       ),

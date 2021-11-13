@@ -32,7 +32,7 @@ class UserServices {
     }
   }
 
-  Future<bool> signOut(id) async {
+  Future<bool> signOut(String id) async {
     final response = await http.get(
       Uri.parse(baseURL + url + 'sign-out/' + id),
     );

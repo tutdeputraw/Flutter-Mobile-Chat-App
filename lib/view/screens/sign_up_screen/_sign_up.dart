@@ -6,7 +6,7 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (BuildContext context) => SignUpProvider(),
+      create: (BuildContext context) => SignUpProvider(context),
       child: Consumer<SignUpProvider>(
         builder: (context, value, _) => Scaffold(
           body: Container(
@@ -54,11 +54,11 @@ class SignUpScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
                   ElevatedButton(
-                    onPressed: () => value.signUpOnClick(context),
+                    onPressed: value.signUpOnClick,
                     child: const Text('SIGN UP'),
                   ),
                   TextButton(
-                    onPressed: () => value.signInOnClick(context),
+                    onPressed: value.signInOnClick,
                     child: const Text('BACK'),
                   ),
                 ],

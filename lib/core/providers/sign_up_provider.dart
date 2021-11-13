@@ -1,22 +1,21 @@
 part of '_provider.dart';
 
 class SignUpProvider extends ChangeNotifier {
+  BuildContext _context;
   TextEditingController _username = TextEditingController();
   TextEditingController _email = TextEditingController();
   TextEditingController _password = TextEditingController();
 
-  SignUpProvider() {
-    print('SignUpProvider');
-  }
+  SignUpProvider(this._context);
 
   TextEditingController get username => _username;
 
-  void signInOnClick(context) {
-    Navigator.pop(context);
+  void signInOnClick() {
+    Navigator.pop(_context);
   }
 
-  void signUpOnClick(context) {
-    SignUpHelper(context).signUp(
+  void signUpOnClick() {
+    SignUpHelper(_context).signUp(
       username: username.text,
       email: email.text,
       password: password.text,

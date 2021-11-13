@@ -10,8 +10,8 @@ part 'sign_in_provider.dart';
 
 part 'sign_up_provider.dart';
 
-part 'homepage_provider.dart';
-
 part 'state_provider.dart';
 
-part 'bottom_navigation_provider.dart';
+part 'screen_provider.dart';
+
+part 'profile_provider.dart';

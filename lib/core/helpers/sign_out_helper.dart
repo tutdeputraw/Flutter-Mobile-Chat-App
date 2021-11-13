@@ -5,14 +5,14 @@ class SignOutHelper {
 
   SignOutHelper(this.context);
 
-  void signOut(int id) async {
-    if (await _getResponse(id.toString())) {
+  void signOut(String id) async {
+    if (await _getResponse(id)) {
       UserSessionHelper().clear();
       _navigate();
     }
   }
 
-  Future<bool> _getResponse(id) {
+  Future<bool> _getResponse(String id) {
     return UserServices().signOut(id);
   }
 

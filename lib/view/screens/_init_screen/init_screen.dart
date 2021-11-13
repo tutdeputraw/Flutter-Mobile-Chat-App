@@ -5,25 +5,11 @@ class InitScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => HomepageProvider()),
-        ChangeNotifierProvider(create: (_) => BottomNavigationProvider()),
-      ],
+    return ChangeNotifierProvider(
+      create: (_) => ScreenProvider(),
       child: Scaffold(
-        body: Consumer<BottomNavigationProvider>(
-          builder: (context, value, _) {
-            switch (value.page) {
-              case 0:
-                return const HomepageScreen(key: Key('HomepageScreen'));
-              case 1:
-                return const SearchScreen(key: Key('SearchScreen'));
-              case 2:
-                return const AddScreen(key: Key('AddScreen'));
-              default:
-                return const ProfileScreen(key: Key('ProfileScreen'));
-            }
-          },
+        body: Consumer<ScreenProvider>(
+          builder: (context, value, _) => value.showScreen(context),
         ),
         bottomNavigationBar: const BottomNavigationWidget(
           key: Key('HomepageBottomNavBar'),

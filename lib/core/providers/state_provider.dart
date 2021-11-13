@@ -10,9 +10,22 @@ class UserStateProvider extends ChangeNotifier {
     init();
   }
 
+  Widget showScreen() {
+    switch (getAppState) {
+      case state.authorize:
+        return const InitScreen(key: Key('InitScreen'));
+      case state.unauthorize:
+        return const SignInScreen(key: Key('SignInScreen'));
+      default:
+        return const SizedBox(key: Key('SizedBox'));
+    }
+  }
+
   void init() async {
     await initiateState();
-    await initiateUser();
+    if (getAppState == state.authorize) {
+      await initiateUser();
+    }
   }
 
   Future initiateUser() async {

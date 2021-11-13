@@ -7,9 +7,27 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('PROFILE'),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: const Text(
+          'PROFILE',
+          style: TextStyle(
+            color: Colors.black87,
+          ),
+        ),
         centerTitle: true,
         automaticallyImplyLeading: false,
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: const [
+            ProfileImageComponent(key: Key('ProfileImage')),
+            ProfileUsernameComponent(key: Key('ProfileUsername')),
+            ProfileEditProfileComponent(key: Key('ProfileEditProfile')),
+            ProfileButtonListComponent(key: Key('ProfileButtonList')),
+          ],
+        ),
       ),
     );
   }

@@ -1,24 +1,29 @@
 part of '_provider.dart';
 
 class SignInProvider extends ChangeNotifier {
+  BuildContext _context;
   TextEditingController _email = TextEditingController();
   TextEditingController _password = TextEditingController();
 
-  SignInProvider(){
-    print('SignInProvider');
+  SignInProvider(this._context);
+
+  void signInOnClick() {
+    SignInHelper(_context).signIn(email: email.text, password: password.text);
   }
 
-  void signInOnClick(context) {
-    SignInHelper(context).signIn(email: email.text, password: password.text);
-  }
-
-  void signUpOnClick(context) {
+  void signUpOnClick() {
+    clearTextField();
     Navigator.push(
-      context,
+      _context,
       MaterialPageRoute(
         builder: (context) => const SignUpScreen(key: Key('SignUp')),
       ),
     );
+  }
+
+  void clearTextField() {
+    email = TextEditingController();
+    password = TextEditingController();
   }
 
   TextEditingController get password => _password;
