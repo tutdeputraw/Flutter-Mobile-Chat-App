@@ -13,14 +13,14 @@ class ProfileEditProfileComponent extends StatelessWidget {
         onPressed: value.editProfileOnClick,
         child: const Text(
           'Edit Profile',
-          style: TextStyle(color: Colors.black87),
+          style: TextStyle(color: Colors.white),
         ),
         style: ElevatedButton.styleFrom(
-          primary: ThemeData().scaffoldBackgroundColor,
+          primary: Colors.transparent,
           elevation: 0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
-            side: const BorderSide(color: Colors.black87),
+            side: const BorderSide(color: Colors.white),
           ),
         ),
       ),

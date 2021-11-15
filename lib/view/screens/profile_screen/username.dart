@@ -7,7 +7,10 @@ class ProfileUsernameComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: const Center(
-        child: Text('Joni Andrea'),
+        child: Text(
+          'Joni Andrea',
+          style: TextStyle(color: Colors.white),
+        ),
       ),
     );
   }

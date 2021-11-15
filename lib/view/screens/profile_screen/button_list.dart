@@ -14,6 +14,7 @@ class ProfileButtonListComponent extends StatelessWidget {
           ProfileListileWidget(
             leading: const Icon(
               Icons.settings_rounded,
+              color: Colors.white70,
             ),
             title: 'Settings',
             onTap: () => value.settingsOnClick,
@@ -21,6 +22,7 @@ class ProfileButtonListComponent extends StatelessWidget {
           ProfileListileWidget(
             leading: const Icon(
               Icons.logout_rounded,
+              color: Colors.white70,
             ),
             title: 'Sign Out',
             onTap: () => value.signOutOnCLick,

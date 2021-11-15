@@ -18,9 +18,15 @@ class ProfileListileWidget extends StatelessWidget {
       onTap: onTap(),
       child: ListTile(
         leading: leading,
-        title: Text(title),
+        title: Text(
+          title,
+          style: const TextStyle(
+            color: Colors.white70,
+          ),
+        ),
         trailing: const Icon(
           Icons.navigate_next_rounded,
+          color: Colors.white70,
         ),
       ),
     );

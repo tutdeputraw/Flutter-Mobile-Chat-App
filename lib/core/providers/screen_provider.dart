@@ -3,6 +3,10 @@ part of '_provider.dart';
 class ScreenProvider extends ChangeNotifier {
   int _page = 0;
 
+  ScreenProvider() {
+    print('ScreenProvider');
+  }
+
   int get page => _page;
 
   set page(int value) {
@@ -13,9 +17,12 @@ class ScreenProvider extends ChangeNotifier {
   Widget showScreen(context) {
     switch (_page) {
       case 0:
-        return const ChatScreen(key: Key('HomepageScreen'));
+        return ChangeNotifierProvider(
+          create: (_) => ChatProvider(context),
+          child: const ChatScreen(key: Key('HomepageScreen')),
+        );
       case 1:
-        return const AddFriendScreen(key: Key('SearchScreen'));
+        return const FriendsScreen(key: Key('SearchScreen'));
       case 2:
         return ChangeNotifierProvider(
           create: (_) => ProfileProvider(context),

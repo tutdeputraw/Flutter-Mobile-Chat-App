@@ -7,6 +7,8 @@ class BottomNavigationWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<ScreenProvider>(
       builder: (context, value, _) => SalomonBottomBar(
+        unselectedItemColor: Colors.white60,
+        selectedItemColor: Colors.white,
         margin: const EdgeInsets.symmetric(
           horizontal: 24,
         ),
@@ -15,14 +17,14 @@ class BottomNavigationWidget extends StatelessWidget {
         items: [
           SalomonBottomBarItem(
             icon: const Icon(CupertinoIcons.chat_bubble),
-            title: const Text('Chat'),
+            title: const Text('Messages'),
           ),
           SalomonBottomBarItem(
-            icon: const Icon(CupertinoIcons.person_add),
-            title: const Text('Add Friend'),
+            icon: const Icon(CupertinoIcons.group),
+            title: const Text('Friends'),
           ),
           SalomonBottomBarItem(
-            icon: const Icon(CupertinoIcons.profile_circled),
+            icon: const Icon(CupertinoIcons.person),
             title: const Text('Profile'),
           ),
         ],

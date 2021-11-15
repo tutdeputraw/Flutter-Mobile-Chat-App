@@ -5,14 +5,20 @@ class InitScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => ScreenProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => WebSocketProvider(context)),
+        ChangeNotifierProvider(create: (_) => ScreenProvider()),
+      ],
       child: Scaffold(
         body: Consumer<ScreenProvider>(
           builder: (context, value, _) => value.showScreen(context),
         ),
-        bottomNavigationBar: const BottomNavigationWidget(
-          key: Key('HomepageBottomNavBar'),
+        bottomNavigationBar: Container(
+          color: Colors.black87,
+          child: const BottomNavigationWidget(
+            key: Key('HomepageBottomNavBar'),
+          ),
         ),
       ),
     );

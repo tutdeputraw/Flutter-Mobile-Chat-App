@@ -16,7 +16,7 @@ part 'chat_screen/_chat_screen.dart';
 
 part 'profile_screen/_profile_screen.dart';
 
-part 'add_friend_screen/_add_friend_screen.dart';
+part 'friends_screen/_friend_screen.dart';
 
 part 'profile_screen/image.dart';
 
@@ -27,3 +27,9 @@ part 'profile_screen/edit_profile.dart';
 part 'profile_screen/button_list.dart';
 
 part 'edit_profile_screen/_edit_profile_screen.dart';
+
+part 'chat_screen/rounded_corner.dart';
+
+part 'chat_screen/floating_action_button.dart';
+
+part 'chat_screen/chat_list.dart';
