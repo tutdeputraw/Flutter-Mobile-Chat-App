@@ -1,4 +1,4 @@
-part of '../../screens/_screen.dart';
+part of '../../_screen.dart';
 
 class ProfileUsernameComponent extends StatelessWidget {
   const ProfileUsernameComponent({Key? key}) : super(key: key);
@@ -9,7 +9,6 @@ class ProfileUsernameComponent extends StatelessWidget {
       child: const Center(
         child: Text(
           'Joni Andrea',
-          style: TextStyle(color: Colors.white),
         ),
       ),
     );

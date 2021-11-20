@@ -7,10 +7,9 @@ class BottomNavigationWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<ScreenProvider>(
       builder: (context, value, _) => SalomonBottomBar(
-        unselectedItemColor: Colors.white60,
-        selectedItemColor: Colors.white,
         margin: const EdgeInsets.symmetric(
           horizontal: 24,
+          vertical: 12,
         ),
         currentIndex: value.page,
         onTap: (index) => value.page = index,

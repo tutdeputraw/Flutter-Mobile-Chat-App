@@ -1,9 +1,9 @@
-part of '_provider.dart';
+part of '../../../core/providers/_provider.dart';
 
-class ProfileProvider extends ChangeNotifier {
+class ProfileScreenProvider extends ChangeNotifier {
   BuildContext context;
 
-  ProfileProvider(this.context) {
+  ProfileScreenProvider(this.context) {
     print('PROFILE');
   }
 

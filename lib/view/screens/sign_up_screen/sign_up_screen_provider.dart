@@ -1,12 +1,12 @@
-part of '_provider.dart';
+part of '../../../core/providers/_provider.dart';
 
-class SignUpProvider extends ChangeNotifier {
+class SignUpScreenProvider extends ChangeNotifier {
   BuildContext _context;
   TextEditingController _username = TextEditingController();
   TextEditingController _email = TextEditingController();
   TextEditingController _password = TextEditingController();
 
-  SignUpProvider(this._context);
+  SignUpScreenProvider(this._context);
 
   TextEditingController get username => _username;
 

@@ -1,11 +1,11 @@
-part of '../../screens/_screen.dart';
+part of '../../_screen.dart';
 
 class ProfileButtonListComponent extends StatelessWidget {
   const ProfileButtonListComponent({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final value = context.read<ProfileProvider>();
+    final value = context.read<ProfileScreenProvider>();
 
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 16),
@@ -14,7 +14,6 @@ class ProfileButtonListComponent extends StatelessWidget {
           ProfileListileWidget(
             leading: const Icon(
               Icons.settings_rounded,
-              color: Colors.white70,
             ),
             title: 'Settings',
             onTap: () => value.settingsOnClick,
@@ -22,7 +21,6 @@ class ProfileButtonListComponent extends StatelessWidget {
           ProfileListileWidget(
             leading: const Icon(
               Icons.logout_rounded,
-              color: Colors.white70,
             ),
             title: 'Sign Out',
             onTap: () => value.signOutOnCLick,

@@ -8,17 +8,14 @@ class InitScreen extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => WebSocketProvider(context)),
-        ChangeNotifierProvider(create: (_) => ScreenProvider()),
+        ChangeNotifierProvider(create: (_) => ScreenProvider(context)),
       ],
       child: Scaffold(
         body: Consumer<ScreenProvider>(
-          builder: (context, value, _) => value.showScreen(context),
+          builder: (context, value, _) => value.showScreen(),
         ),
-        bottomNavigationBar: Container(
-          color: Colors.black87,
-          child: const BottomNavigationWidget(
-            key: Key('HomepageBottomNavBar'),
-          ),
+        bottomNavigationBar: const BottomNavigationWidget(
+          key: Key('HomepageBottomNavBar'),
         ),
       ),
     );

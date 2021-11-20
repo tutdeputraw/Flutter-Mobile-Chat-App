@@ -43,4 +43,16 @@ class UserServices {
       return false;
     }
   }
+
+  Future<List<UserModel>> search(String keyword) async {
+    final response = await http.get(Uri.parse(
+      baseURL + url + '?search' + keyword,
+    ));
+
+    if (response.statusCode == 200) {
+      return userModelFromJson(response.body);
+    } else {
+      return [];
+    }
+  }
 }

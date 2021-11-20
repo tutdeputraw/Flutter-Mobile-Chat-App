@@ -6,3 +6,5 @@ import 'package:provider/provider.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 part 'bottom_nav_bar.dart';
+
+part 'snackbar.dart';

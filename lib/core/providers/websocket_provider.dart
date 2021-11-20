@@ -42,7 +42,7 @@ class WebSocketProvider extends ChangeNotifier {
     print(error.toString());
   }
 
-  String get _getURL => 'ws://192.168.0.5:6060/${getUserId(context)}';
+  String get _getURL => 'ws://192.168.0.6:6060/${getUserId(context)}';
 
   int? getUserId(context) {
     final userState = Provider.of<UserStateProvider>(context, listen: false);

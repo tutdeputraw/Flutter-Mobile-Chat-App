@@ -1,11 +1,11 @@
-part of '../../screens/_screen.dart';
+part of '../../_screen.dart';
 
 class ProfileEditProfileComponent extends StatelessWidget {
   const ProfileEditProfileComponent({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final value = context.read<ProfileProvider>();
+    final value = context.read<ProfileScreenProvider>();
 
     return Container(
       padding: const EdgeInsets.all(16),
@@ -13,14 +13,16 @@ class ProfileEditProfileComponent extends StatelessWidget {
         onPressed: value.editProfileOnClick,
         child: const Text(
           'Edit Profile',
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(
+            color: Colors.black87,
+          ),
         ),
         style: ElevatedButton.styleFrom(
-          primary: Colors.transparent,
+          primary: ThemeData().scaffoldBackgroundColor,
           elevation: 0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
-            side: const BorderSide(color: Colors.white),
+            side: const BorderSide(color: Colors.black87),
           ),
         ),
       ),

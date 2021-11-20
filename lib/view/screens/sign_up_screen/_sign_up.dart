@@ -6,8 +6,8 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (BuildContext context) => SignUpProvider(context),
-      child: Consumer<SignUpProvider>(
+      create: (BuildContext context) => SignUpScreenProvider(context),
+      child: Consumer<SignUpScreenProvider>(
         builder: (context, value, _) => Scaffold(
           body: Container(
             padding: const EdgeInsets.all(16),

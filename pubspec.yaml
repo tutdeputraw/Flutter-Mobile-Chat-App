@@ -41,6 +41,9 @@ dependencies:
   salomon_bottom_bar: ^3.1.0
   font_awesome_flutter: ^9.2.0
   web_socket_channel: ^2.1.0
+  search_page: ^2.0.0+1
+  sqflite: ^2.0.0+4
+  path: ^1.8.0
 
 dev_dependencies:
   flutter_test:

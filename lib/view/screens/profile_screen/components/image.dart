@@ -1,4 +1,4 @@
-part of '../../screens/_screen.dart';
+part of '../../_screen.dart';
 
 class ProfileImageComponent extends StatelessWidget {
   const ProfileImageComponent({Key? key}) : super(key: key);

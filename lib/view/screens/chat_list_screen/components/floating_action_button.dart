@@ -1,11 +1,11 @@
-part of '../../screens/_screen.dart';
+part of '../../_screen.dart';
 
 class ChatFloatingActionButtonComponent extends StatelessWidget {
   const ChatFloatingActionButtonComponent({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final value = context.read<ChatProvider>();
+    final value = context.read<ChatListScreenProvider>();
 
     return ElevatedButton(
       onPressed: value.fabOnClick,
