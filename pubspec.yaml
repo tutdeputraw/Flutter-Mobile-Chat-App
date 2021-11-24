@@ -44,6 +44,8 @@ dependencies:
   search_page: ^2.0.0+1
   sqflite: ^2.0.0+4
   path: ^1.8.0
+  get: ^4.3.8
+  flutter_chat_bubble: ^2.0.0
 
 dev_dependencies:
   flutter_test:

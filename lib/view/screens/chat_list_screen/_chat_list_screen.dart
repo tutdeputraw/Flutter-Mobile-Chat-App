@@ -5,7 +5,7 @@ class ChatListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final value = context.read<ChatListScreenProvider>();
+    final controller = Get.put(ChatListScreenController());
 
     return Scaffold(
       appBar: AppBar(
@@ -16,16 +16,21 @@ class ChatListScreen extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: value.searchOnClick,
+            onPressed: () => controller.searchOnClick(context),
             icon: const Icon(
               CupertinoIcons.search,
             ),
           )
         ],
       ),
-      body: ListView.builder(
-        itemCount: 10,
-        itemBuilder: (context, i) => Text('data: $i'),
+      body: GetBuilder(
+        init: ChatController(),
+        builder: (_) => ListView.builder(
+          itemCount: controller.getMessages.length,
+          itemBuilder: (context, index) => ChatListScreenCardComponent(
+            data: controller.getMessages[index],
+          ),
+        ),
       ),
       floatingActionButton: const ChatFloatingActionButtonComponent(
         key: Key('ChatFloatingActionButton'),

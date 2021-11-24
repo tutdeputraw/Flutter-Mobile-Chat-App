@@ -5,17 +5,19 @@ class NewChatScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(FriendController());
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('New chat'),
       ),
-      body: Consumer<FriendProvider>(
-        builder: (context, value, _) => value.friend.isNotEmpty
+      body: GetBuilder(
+        init: FriendController(),
+        builder: (_) => controller.friend.isNotEmpty
             ? ListView.builder(
-                itemCount: value.friend.length,
+                itemCount: controller.friend.length,
                 itemBuilder: (context, index) => _card(
-                  context: context,
-                  data: value.friend[index],
+                  data: controller.friend[index],
                 ),
               )
             : const Text('You have no friend:('),
@@ -23,24 +25,16 @@ class NewChatScreen extends StatelessWidget {
     );
   }
 
-  Widget _card({required Friend data, required BuildContext context}) {
+  Widget _card({required UserModel data}) {
     return InkWell(
       onTap: () {
-        Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(
-            builder: (context) => ChangeNotifierProvider(
-              create: (BuildContext context) => ChatScreenProvider(data),
-              child: const ChatScreen(),
-            ),
-          ),
-          (Route<dynamic> route) => route.isFirst,
-        );
+        Get.off(ChatScreen(friend: data));
       },
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 6),
         child: ListTile(
           tileColor: Colors.white,
-          title: Text(data.name),
+          title: Text(data.username),
         ),
       ),
     );

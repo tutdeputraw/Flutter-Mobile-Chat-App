@@ -5,7 +5,7 @@ class FriendsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = context.read<FriendScreenProvider>();
+    final controller = Get.put(FriendScreenController());
 
     return Scaffold(
       appBar: AppBar(
@@ -14,17 +14,18 @@ class FriendsScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
-            onPressed: provider.searchNewFriendsOnClick,
+            onPressed: () => controller.searchNewFriendsOnClick(context),
             icon: const Icon(CupertinoIcons.person_add_solid),
           ),
         ],
       ),
-      body: Consumer<FriendScreenProvider>(
-        builder: (context, value, _) => value.friendProvider.friend.isNotEmpty
+      body: GetBuilder(
+        init: FriendScreenController(),
+        builder: (_) => controller.friendController.friend.isNotEmpty
             ? ListView.builder(
-                itemCount: value.friendProvider.friend.length,
+                itemCount: controller.friendController.friend.length,
                 itemBuilder: (context, index) => _card(
-                  value.friendProvider.friend[index],
+                  controller.friendController.friend[index],
                 ),
               )
             : const Center(child: Text('You have no friend yet :(')),
@@ -32,12 +33,12 @@ class FriendsScreen extends StatelessWidget {
     );
   }
 
-  Widget _card(Friend data) {
+  Widget _card(UserModel data) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 6),
       child: ListTile(
         tileColor: Colors.white,
-        title: Text(data.name),
+        title: Text(data.username),
       ),
     );
   }

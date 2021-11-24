@@ -5,10 +5,10 @@ class ChatFloatingActionButtonComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final value = context.read<ChatListScreenProvider>();
+    final controller = Get.put(ChatListScreenController());
 
     return ElevatedButton(
-      onPressed: value.fabOnClick,
+      onPressed: controller.fabOnClick,
       child: const Icon(Icons.create_outlined),
       style: ElevatedButton.styleFrom(
         padding: const EdgeInsets.all(16),

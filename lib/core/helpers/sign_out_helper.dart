@@ -1,29 +1,27 @@
 part of '_helpers.dart';
 
 class SignOutHelper {
-  BuildContext context;
-
-  SignOutHelper(this.context);
-
-  void signOut(String id) async {
+  static void signOut(String id) async {
     if (await _getResponse(id)) {
-      UserSessionHelper().clear();
+      UserSessionHelper.clear();
       _navigate();
+      _releaseController();
     }
   }
 
-  Future<bool> _getResponse(String id) {
+  static void _releaseController(){
+    Get.delete<InitScreenController>();
+    Get.delete<ChatListScreenController>();
+    Get.delete<FriendScreenController>();
+    Get.delete<ProfileScreenController>();
+    Get.delete<WebSocketController>();
+  }
+
+  static Future<bool> _getResponse(String id) {
     return UserServices().signOut(id);
   }
 
-  void _navigate() {
-    Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute(
-        builder: (context) => const App(
-          key: Key('App'),
-        ),
-      ),
-      (route) => false,
-    );
+  static void _navigate() {
+    Get.offAll(const SignInScreen());
   }
 }

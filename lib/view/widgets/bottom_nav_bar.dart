@@ -5,14 +5,17 @@ class BottomNavigationWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ScreenProvider>(
-      builder: (context, value, _) => SalomonBottomBar(
+    final initScreenController = Get.put(InitScreenController());
+
+    return GetBuilder(
+      init: InitScreenController(),
+      builder: (_) => SalomonBottomBar(
         margin: const EdgeInsets.symmetric(
           horizontal: 24,
           vertical: 12,
         ),
-        currentIndex: value.page,
-        onTap: (index) => value.page = index,
+        currentIndex: initScreenController.page,
+        onTap: (index) => initScreenController.page = index,
         items: [
           SalomonBottomBarItem(
             icon: const Icon(CupertinoIcons.chat_bubble),

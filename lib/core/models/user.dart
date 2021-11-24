@@ -11,8 +11,15 @@ class UserModel {
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
-      username: json["username"],
       id: json["id"],
+      username: json["username"],
+    );
+  }
+
+  factory UserModel.fromJsonA(Map<String, dynamic> json) {
+    return UserModel(
+      id: json["user"]["id"],
+      username: json["user"]["username"],
     );
   }
 
@@ -28,6 +35,14 @@ List<UserModel> userModelFromJson(String str) {
   return List<UserModel>.from(
     jsonDecode(str).map((x) {
       return UserModel.fromJson(x);
+    }),
+  );
+}
+
+List<UserModel> userModelFromJsonA(String str) {
+  return List<UserModel>.from(
+    jsonDecode(str).map((x) {
+      return UserModel.fromJsonA(x);
     }),
   );
 }

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_chat_app/core/helpers/_helpers.dart';
-import 'package:flutter_chat_app/core/providers/_provider.dart';
-import 'package:flutter_chat_app/view/screens/_screen.dart';
-import 'package:provider/provider.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:flutter_chat_app/core/controller/_controller.dart';
 
 void main() {
-  runApp(const App(key: Key('App')));
+  runApp(const App());
 }
 
 class App extends StatelessWidget {
@@ -13,32 +14,23 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (context) => UserStateProvider()),
-        ChangeNotifierProvider(create: (context) => FriendProvider()),
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Chat App',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: Scaffold(
-          body: Consumer<UserStateProvider>(builder: (context, value, _) {
-            if (value.getAppState != null) {
-              switch (value.getAppState) {
-                case state.authorize:
-                  return const InitScreen();
-                case state.unauthorize:
-                  return const SignInScreen();
-                default:
-              }
-            }
-            return const Center(child: CircularProgressIndicator());
-          }),
-        ),
+    final userState = Get.put(UserStateController());
+
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Chat App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
+      home: GetBuilder(
+        init: UserStateController(),
+        builder: (_) => userState.getAppState != null
+            ? userState.setHome
+            : userState.loading,
+      ),
+      // home: userState.getAppState != null
+      //     ? userState.setHome
+      //     : userState.loading,
     );
   }
 }

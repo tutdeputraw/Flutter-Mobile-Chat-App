@@ -1,11 +1,16 @@
 part of '../../_screen.dart';
 
 class ChatBarComponent extends StatelessWidget {
-  const ChatBarComponent({Key? key}) : super(key: key);
+  final UserModel friend;
+
+  const ChatBarComponent({
+    Key? key,
+    required this.friend,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final value = context.watch<ChatScreenProvider>();
+    final value = Get.put(ChatScreenController());
 
     return Container(
       margin: const EdgeInsets.all(5),
@@ -16,6 +21,7 @@ class ChatBarComponent extends StatelessWidget {
         controller: value.text,
         keyboardType: TextInputType.multiline,
         decoration: InputDecoration(
+          hintText: 'Type your text',
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(30),
           ),
@@ -25,7 +31,7 @@ class ChatBarComponent extends StatelessWidget {
           ),
           suffixIcon: IconButton(
             splashRadius: 20,
-            onPressed: value.sendOnClick,
+            onPressed: () => value.sendOnClick(friend),
             icon: const Icon(
               Icons.send_outlined,
             ),

@@ -1,11 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_chat_app/core/controller/_controller.dart';
 import 'package:flutter_chat_app/core/models/_model.dart';
-import 'package:flutter_chat_app/core/providers/_provider.dart';
-import 'package:flutter_chat_app/main.dart';
 import 'package:flutter_chat_app/view/screens/profile_screen/local_widgets/_local_widgets.dart';
 import 'package:flutter_chat_app/view/widgets/_widget.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_chat_bubble/bubble_type.dart';
+import 'package:flutter_chat_bubble/chat_bubble.dart';
+import 'package:flutter_chat_bubble/clippers/chat_bubble_clipper_1.dart';
+import 'package:flutter_chat_bubble/clippers/chat_bubble_clipper_2.dart';
+import 'package:flutter_chat_bubble/clippers/chat_bubble_clipper_3.dart';
+import 'package:flutter_chat_bubble/clippers/chat_bubble_clipper_4.dart';
+import 'package:flutter_chat_bubble/clippers/chat_bubble_clipper_5.dart';
+import 'package:flutter_chat_bubble/clippers/chat_bubble_clipper_6.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
 
 part 'sign_in_screen/_sign_in.dart';
 
@@ -36,3 +45,7 @@ part 'chat_screen/components/chat_bar.dart';
 part 'new_chat_screen/_new_chat_screen.dart';
 
 part 'chat_screen/chat_screen.dart';
+
+part 'chat_list_screen/components/card.dart';
+
+part 'chat_screen/components/chat_card.dart';

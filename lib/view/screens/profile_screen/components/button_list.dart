@@ -5,7 +5,7 @@ class ProfileButtonListComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final value = context.read<ProfileScreenProvider>();
+    final controller = Get.put(ProfileScreenController());
 
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 16),
@@ -16,14 +16,14 @@ class ProfileButtonListComponent extends StatelessWidget {
               Icons.settings_rounded,
             ),
             title: 'Settings',
-            onTap: () => value.settingsOnClick,
+            onTap: () => controller.settingsOnClick,
           ),
           ProfileListileWidget(
             leading: const Icon(
               Icons.logout_rounded,
             ),
             title: 'Sign Out',
-            onTap: () => value.signOutOnCLick,
+            onTap: () => controller.signOutOnCLick,
           ),
         ],
       ),

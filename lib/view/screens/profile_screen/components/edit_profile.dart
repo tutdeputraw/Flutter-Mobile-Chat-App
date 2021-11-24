@@ -5,12 +5,12 @@ class ProfileEditProfileComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final value = context.read<ProfileScreenProvider>();
+    final controller = Get.put(ProfileScreenController());
 
     return Container(
       padding: const EdgeInsets.all(16),
       child: ElevatedButton(
-        onPressed: value.editProfileOnClick,
+        onPressed: controller.editProfileOnClick,
         child: const Text(
           'Edit Profile',
           style: TextStyle(

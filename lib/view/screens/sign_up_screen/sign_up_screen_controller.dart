@@ -1,43 +1,40 @@
-part of '../../../core/providers/_provider.dart';
+part of '../../../core/controller/_controller.dart';
 
-class SignUpScreenProvider extends ChangeNotifier {
-  BuildContext _context;
+class SignUpScreenController extends GetxController {
   TextEditingController _username = TextEditingController();
   TextEditingController _email = TextEditingController();
   TextEditingController _password = TextEditingController();
 
-  SignUpScreenProvider(this._context);
-
-  TextEditingController get username => _username;
-
   void signInOnClick() {
-    Navigator.pop(_context);
+    Get.back();
   }
 
   void signUpOnClick() {
-    SignUpHelper(_context).signUp(
+    SignUpHelper.signUp(
       username: username.text,
       email: email.text,
       password: password.text,
     );
   }
 
+  TextEditingController get username => _username;
+
   set username(TextEditingController value) {
     _username = value;
-    notifyListeners();
+    update();
   }
 
   TextEditingController get email => _email;
 
   set email(TextEditingController value) {
     _email = value;
-    notifyListeners();
+    update();
   }
 
   TextEditingController get password => _password;
 
   set password(TextEditingController value) {
     _password = value;
-    notifyListeners();
+    update();
   }
 }

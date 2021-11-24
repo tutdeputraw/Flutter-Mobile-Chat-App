@@ -1,16 +1,21 @@
-part of '_provider.dart';
+part of '_controller.dart';
 
 enum state { authorize, unauthorize }
 
-class UserStateProvider extends ChangeNotifier {
+class UserStateController extends GetxController {
   UserState? _user;
   state? _appState;
 
-  UserStateProvider() {
-    init();
+  @override
+  void onInit() async {
+    super.onInit();
+    await initiateState();
+    if (getAppState == state.authorize) {
+      await initiateUser();
+    }
   }
 
-  Widget showScreen() {
+  Widget get setHome {
     switch (getAppState) {
       case state.authorize:
         return const InitScreen(key: Key('InitScreen'));
@@ -21,20 +26,19 @@ class UserStateProvider extends ChangeNotifier {
     }
   }
 
-  void init() async {
-    await initiateState();
-    if (getAppState == state.authorize) {
-      await initiateUser();
-    }
+  Widget get loading {
+    return const Scaffold(
+      body: Center(child: CircularProgressIndicator()),
+    );
   }
 
   Future initiateUser() async {
-    final user = await UserSessionHelper().getUser();
+    final user = await UserSessionHelper.getUser();
     setUser = user!;
   }
 
   Future initiateState() async {
-    if (await UserSessionHelper().isContainUser()) {
+    if (await UserSessionHelper.isContainUser()) {
       setAppState = state.authorize;
     } else {
       setAppState = state.unauthorize;
@@ -45,13 +49,13 @@ class UserStateProvider extends ChangeNotifier {
 
   set setAppState(state value) {
     _appState = value;
-    notifyListeners();
+    update();
   }
 
   UserState? get getUser => _user;
 
   set setUser(UserState value) {
     _user = value;
-    notifyListeners();
+    update();
   }
 }
