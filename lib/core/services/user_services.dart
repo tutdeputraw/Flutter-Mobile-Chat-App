@@ -55,4 +55,16 @@ class UserServices {
       return [];
     }
   }
+
+  Future<UserModel?> setUserInfo(String id) async {
+    final response = await http.get(Uri.parse(
+      baseURL + url + '/info?id=' + id,
+    ));
+
+    if (response.statusCode == 200) {
+      return userModelSetUserInfo(response.body);
+    } else {
+      return null;
+    }
+  }
 }

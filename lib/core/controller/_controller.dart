@@ -1,3 +1,6 @@
+import 'dart:collection';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/view/widgets/search_bar.dart';
 import 'package:get/get.dart';
@@ -29,3 +32,5 @@ part '../../view/screens/profile_screen/profile_screen_controller.dart';
 part '../../view/screens/chat_screen/chat_screen_controller.dart';
 
 part 'chat_controller.dart';
+
+part 'user_controller.dart';

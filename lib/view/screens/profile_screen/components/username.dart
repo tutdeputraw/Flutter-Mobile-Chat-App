@@ -5,11 +5,11 @@ class ProfileUsernameComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(UserController());
+
     return Container(
-      child: const Center(
-        child: Text(
-          'Joni Andrea',
-        ),
+      child: Center(
+        child: Text(controller.userInfo.username),
       ),
     );
   }

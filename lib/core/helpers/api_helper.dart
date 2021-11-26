@@ -9,4 +9,13 @@ class ApiHelper {
       userId: userStateController.getUser!.id!.toString(),
     );
   }
+
+  static void initializeUser() async {
+    final userInfo = Get.put(UserController());
+    final userState = Get.put(UserStateController());
+
+    userInfo.userInfo = (await UserServices().setUserInfo(
+      userState.getUser!.id!.toString(),
+    ))!;
+  }
 }

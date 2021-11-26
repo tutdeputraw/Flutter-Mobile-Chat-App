@@ -28,9 +28,6 @@ class App extends StatelessWidget {
             ? userState.setHome
             : userState.loading,
       ),
-      // home: userState.getAppState != null
-      //     ? userState.setHome
-      //     : userState.loading,
     );
   }
 }

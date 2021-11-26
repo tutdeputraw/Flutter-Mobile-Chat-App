@@ -7,6 +7,8 @@ class InitScreenController extends GetxController {
   void onInit() {
     super.onInit();
     ApiHelper.initializeFriends();
+    ApiHelper.initializeUser();
+
     Get.put(WebSocketController());
     Get.put(ChatController());
     Get.put(ProfileScreenController());

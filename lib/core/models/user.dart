@@ -23,6 +23,12 @@ class UserModel {
     );
   }
 
+  factory UserModel.setUserInfo(Map<String, dynamic> json) {
+    return UserModel(
+      username: json["username"],
+    );
+  }
+
   Map<String, dynamic> toJson() {
     return {
       "username": username,
@@ -45,6 +51,10 @@ List<UserModel> userModelFromJsonA(String str) {
       return UserModel.fromJsonA(x);
     }),
   );
+}
+
+UserModel userModelSetUserInfo(String str) {
+  return UserModel.setUserInfo(json.decode(str));
 }
 
 String userModelToJson(List<UserModel> data) {

@@ -39,7 +39,7 @@ class WebSocketController extends GetxController {
     }
   }
 
-  void _onMessage(message) {
+  void _onMessage(String message) {
     if (message == 'connected') {
       connected = true;
       print('connected: ' + connected.toString());
@@ -47,6 +47,23 @@ class WebSocketController extends GetxController {
       print("Message send success");
     } else if (message == "send:error") {
       print("Message send error");
+    } else if (message.contains('"cmd":"send"')) {
+      print("Message data");
+      var jsondata = jsonDecode(message);
+      final chat = Get.put(ChatController());
+      chat.addMessage(Messages(
+        senderId: jsondata['senderId'],
+        receiver: UserModel(
+          id: Get.put(UserStateController()).getUser!.id!,
+          username: 'anonym',
+        ),
+        messageData: [
+          MessageData(
+            userId: Get.put(UserStateController()).getUser!.id!.toString(),
+            text: jsondata['text'],
+          )
+        ],
+      ));
     }
   }
 
