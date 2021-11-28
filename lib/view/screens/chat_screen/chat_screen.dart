@@ -1,32 +1,37 @@
 part of '../../screens/_screen.dart';
 
 class ChatScreen extends StatelessWidget {
-  final UserModel friend;
+  final String friendId;
 
-  const ChatScreen({Key? key, required this.friend}) : super(key: key);
+  const ChatScreen({
+    Key? key,
+    required this.friendId,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(ChatController());
+    final chatController = Get.put(ChatScreenController());
+    print('friendId: ' + friendId);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(friend.username),
+        title: Text(chatController.getId(friendId)),
       ),
       body: GetBuilder(
         init: ChatController(),
-        builder: (_) => controller.getMessageData(friend.id).isNotEmpty
+        builder: (_) => controller.getMessageData(friendId).isNotEmpty
             ? ListView.builder(
-                itemCount: controller.getMessageData(friend.id).length,
+                itemCount: controller.getMessageData(friendId).length,
                 itemBuilder: (context, index) => ChatScreenCardComponent(
-                  data: controller.getMessageData(friend.id)[index],
+                  data: controller.getMessageData(friendId)[index],
                 ),
               )
             : const SizedBox(),
       ),
       bottomNavigationBar: ChatBarComponent(
         key: const Key('ChatBar'),
-        friend: friend,
+        friendId: friendId,
       ),
     );
   }

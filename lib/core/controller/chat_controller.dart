@@ -14,7 +14,7 @@ class ChatController extends GetxController {
   }
 
   void _updateMessage(Messages updatedMessage) {
-    getMessage(updatedMessage.receiver.id)
+    getMessage(updatedMessage.receiverId)
         .messageData
         .add(updatedMessage.messageData.first);
     update();
@@ -25,23 +25,17 @@ class ChatController extends GetxController {
     update();
   }
 
-  int getMessageIndex(int receiverId) {
+  int getMessageIndex(String receiverId) {
     return messages.indexWhere((element) {
-      // return element.receiver.id == messages.receiver.id;
-      return element.receiver.id == receiverId;
+      return element.receiverId == receiverId;
     });
   }
 
-  Messages getMessage(int receiverId) {
-    // return this.messages[getMessageIndex(messages)];
-    // int index = getMessageIndex(receiverId);
-    // if (index >= 0) {
-    //
-    // }
+  Messages getMessage(String receiverId) {
     return messages[getMessageIndex(receiverId)];
   }
 
-  List<MessageData> getMessageData(int receiverId) {
+  List<MessageData> getMessageData(String receiverId) {
     int index = getMessageIndex(receiverId);
     if (index >= 0) {
       return messages[getMessageIndex(receiverId)].messageData;
@@ -51,7 +45,7 @@ class ChatController extends GetxController {
   }
 
   bool isMessagesExist(Messages messages) {
-    if (getMessageIndex(messages.receiver.id) >= 0) {
+    if (getMessageIndex(messages.receiverId) >= 0) {
       return true;
     } else {
       return false;

@@ -1,11 +1,11 @@
 part of '../../_screen.dart';
 
 class ChatBarComponent extends StatelessWidget {
-  final UserModel friend;
+  final String friendId;
 
   const ChatBarComponent({
     Key? key,
-    required this.friend,
+    required this.friendId,
   }) : super(key: key);
 
   @override
@@ -31,7 +31,7 @@ class ChatBarComponent extends StatelessWidget {
           ),
           suffixIcon: IconButton(
             splashRadius: 20,
-            onPressed: () => value.sendOnClick(friend),
+            onPressed: () => value.sendOnClick(friendId),
             icon: const Icon(
               Icons.send_outlined,
             ),

@@ -17,13 +17,13 @@ class ChatListScreenCardComponent extends StatelessWidget {
         vertical: 10,
         horizontal: 16,
       ),
-      onTap: () => controller.cardOnCLick(data.receiver),
+      onTap: () => controller.cardOnCLick(controller.getFriendId(data)),
       leading: const CircleAvatar(
         radius: 30,
         backgroundImage: NetworkImage('https://picsum.photos/250?image=28'),
       ),
-      title: Text(data.receiver.username),
-      subtitle: Text(data.messageData.last.text),
+      title: Text(controller.getFriendId(data)),
+      subtitle: Text(controller.getSubtitle(data)),
     );
   }
 }

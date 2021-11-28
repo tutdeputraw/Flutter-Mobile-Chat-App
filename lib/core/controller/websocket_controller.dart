@@ -52,14 +52,11 @@ class WebSocketController extends GetxController {
       var jsondata = jsonDecode(message);
       final chat = Get.put(ChatController());
       chat.addMessage(Messages(
-        senderId: jsondata['senderId'],
-        receiver: UserModel(
-          id: Get.put(UserStateController()).getUser!.id!,
-          username: 'anonym',
-        ),
+        senderId: Get.put(UserStateController()).getUser!.id!.toString(),
+        receiverId: jsondata['senderId'],
         messageData: [
           MessageData(
-            userId: Get.put(UserStateController()).getUser!.id!.toString(),
+            userId: jsondata['senderId'],
             text: jsondata['text'],
           )
         ],

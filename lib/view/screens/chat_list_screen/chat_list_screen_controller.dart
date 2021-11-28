@@ -1,16 +1,32 @@
 part of '../../../core/controller/_controller.dart';
 
 class ChatListScreenController extends GetxController {
+  final chatController = Get.put(ChatController());
+
   List<Messages> get getMessages {
-    return Get.put(ChatController()).messages;
+    return chatController.messages;
   }
 
   void fabOnClick() {
     Get.to(const NewChatScreen(key: Key('NewChatScreen')));
   }
 
-  void cardOnCLick(UserModel friend){
-    Get.to(ChatScreen(friend: friend));
+  void cardOnCLick(String friendId) {
+    Get.to(ChatScreen(friendId: friendId));
+  }
+
+  String getFriendId(Messages data) {
+    final userController = Get.put(UserStateController());
+
+    if (data.senderId == userController.getUser!.id.toString()) {
+      return data.receiverId;
+    } else {
+      return data.senderId;
+    }
+  }
+
+  String getSubtitle(Messages data) {
+    return data.messageData.last.text;
   }
 
   void searchOnClick(context) {

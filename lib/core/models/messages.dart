@@ -2,12 +2,12 @@ part of '_model.dart';
 
 class Messages {
   String senderId;
-  UserModel receiver;
+  String receiverId;
   List<MessageData> messageData;
 
   Messages({
     required this.senderId,
-    required this.receiver,
+    required this.receiverId,
     required this.messageData,
   });
 }

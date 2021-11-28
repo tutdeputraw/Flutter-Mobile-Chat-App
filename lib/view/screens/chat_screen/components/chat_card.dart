@@ -14,13 +14,11 @@ class ChatScreenCardComponent extends StatelessWidget {
 
     return ChatBubble(
       clipper: ChatBubbleClipper6(
-        type: controller.isFromSender(data.userId)
-            ? BubbleType.sendBubble
-            : BubbleType.receiverBubble,
+        type: controller.getChatType(data),
       ),
-      alignment: Alignment.topRight,
+      alignment: controller.getAlignment(data),
       margin: const EdgeInsets.all(8),
-      backGroundColor: Colors.white,
+      backGroundColor: Colors.red,
       child: Container(
         constraints: BoxConstraints(
           maxWidth: MediaQuery.of(context).size.width * 0.7,

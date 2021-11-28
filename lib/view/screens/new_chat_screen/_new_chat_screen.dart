@@ -28,7 +28,7 @@ class NewChatScreen extends StatelessWidget {
   Widget _card({required UserModel data}) {
     return InkWell(
       onTap: () {
-        Get.off(ChatScreen(friend: data));
+        Get.off(ChatScreen(friendId: data.id.toString()));
       },
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 6),
