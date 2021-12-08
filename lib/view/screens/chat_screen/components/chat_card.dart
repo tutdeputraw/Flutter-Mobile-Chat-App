@@ -17,7 +17,6 @@ class ChatScreenCardComponent extends StatelessWidget {
         type: controller.getChatType(data),
       ),
       alignment: controller.getAlignment(data),
-      margin: const EdgeInsets.all(8),
       backGroundColor: Colors.white,
       child: Container(
         constraints: BoxConstraints(

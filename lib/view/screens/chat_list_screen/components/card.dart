@@ -12,18 +12,23 @@ class ChatListScreenCardComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(ChatListScreenController());
 
-    return ListTile(
-      contentPadding: const EdgeInsets.symmetric(
-        vertical: 10,
-        horizontal: 16,
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16)
       ),
-      onTap: () => controller.cardOnCLick(controller.getFriendId(data)),
-      leading: const CircleAvatar(
-        radius: 30,
-        backgroundImage: NetworkImage('https://picsum.photos/250?image=28'),
+      child: ListTile(
+        contentPadding: const EdgeInsets.symmetric(
+          vertical: 10,
+          horizontal: 16,
+        ),
+        onTap: () => controller.cardOnCLick(controller.getFriendId(data)),
+        leading: const CircleAvatar(
+          radius: 30,
+          backgroundImage: NetworkImage('https://picsum.photos/250?image=28'),
+        ),
+        title: Text(controller.getFriendName(controller.getFriendId(data))),
+        subtitle: Text(controller.getSubtitle(data)),
       ),
-      title: Text(controller.getFriendName(controller.getFriendId(data))),
-      subtitle: Text(controller.getSubtitle(data)),
     );
   }
 }

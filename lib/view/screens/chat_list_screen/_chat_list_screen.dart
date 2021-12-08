@@ -23,10 +23,15 @@ class ChatListScreen extends StatelessWidget {
       ),
       body: GetBuilder(
         init: ChatController(),
-        builder: (_) => ListView.builder(
+        builder: (_) => ListView.separated(
+          padding: const EdgeInsets.all(16),
           itemCount: controller.getMessages.length,
           itemBuilder: (context, index) => ChatListScreenCardComponent(
             data: controller.getMessages[index],
+          ),
+          separatorBuilder: (context, index) => const Divider(
+            height: 16,
+            color: Colors.transparent,
           ),
         ),
       ),

@@ -17,14 +17,18 @@ class ChatScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(chatController.getFriendName(friendId)),
       ),
-
       body: GetBuilder(
         init: ChatController(),
         builder: (_) => controller.getMessageData(friendId).isNotEmpty
-            ? ListView.builder(
+            ? ListView.separated(
+                padding: const EdgeInsets.all(16),
                 itemCount: controller.getMessageData(friendId).length,
                 itemBuilder: (context, index) => ChatScreenCardComponent(
                   data: controller.getMessageData(friendId)[index],
+                ),
+                separatorBuilder: (context, index) => const Divider(
+                  height: 16,
+                  color: Colors.transparent,
                 ),
               )
             : const SizedBox(),
