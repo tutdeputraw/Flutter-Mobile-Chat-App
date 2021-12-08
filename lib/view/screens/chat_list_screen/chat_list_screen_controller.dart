@@ -25,6 +25,12 @@ class ChatListScreenController extends GetxController {
     }
   }
 
+  String getFriendName(String id) {
+    final friend = Get.put(FriendController());
+
+    return friend.getFriendNameById(id);
+  }
+
   String getSubtitle(Messages data) {
     return data.messageData.last.text;
   }

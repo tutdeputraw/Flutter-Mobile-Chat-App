@@ -3,8 +3,18 @@ part of '../../../core/controller/_controller.dart';
 class ProfileScreenController extends GetxController {
   final userStateController = Get.put(UserStateController());
 
+  void goToPage() async {
+    Get.to(const ProfileScreen());
+  }
+
   void signOutOnCLick() {
-    SignOutHelper.signOut(userStateController.getUser!.id.toString());
+    Get.put(SignOutController()).signOut(
+      userStateController.getUser!.id.toString(),
+    );
+  }
+
+  String getUsername() {
+    return Get.put(UserController()).userInfo.username;
   }
 
   void settingsOnClick() {}

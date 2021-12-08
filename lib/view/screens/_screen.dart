@@ -28,14 +28,6 @@ part 'profile_screen/_profile_screen.dart';
 
 part 'friends_screen/_friend_screen.dart';
 
-part 'profile_screen/components/image.dart';
-
-part 'profile_screen/components/username.dart';
-
-part 'profile_screen/components/edit_profile.dart';
-
-part 'profile_screen/components/button_list.dart';
-
 part 'edit_profile_screen/_edit_profile_screen.dart';
 
 part 'chat_list_screen/components/floating_action_button.dart';

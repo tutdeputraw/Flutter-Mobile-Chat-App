@@ -1,7 +1,7 @@
-part of '_helpers.dart';
+part of '_controller.dart';
 
-class SignOutHelper {
-  static void signOut(String id) async {
+class SignOutController extends GetxController {
+  void signOut(String id) async {
     if (await _getResponse(id)) {
       UserSessionHelper.clear();
       _navigate();
@@ -9,7 +9,8 @@ class SignOutHelper {
     }
   }
 
-  static void _releaseController(){
+  void _releaseController() {
+    Get.delete<UserStateController>();
     Get.delete<InitScreenController>();
     Get.delete<ChatListScreenController>();
     Get.delete<FriendScreenController>();
@@ -17,11 +18,11 @@ class SignOutHelper {
     Get.delete<WebSocketController>();
   }
 
-  static Future<bool> _getResponse(String id) {
+  Future<bool> _getResponse(String id) {
     return UserServices().signOut(id);
   }
 
-  static void _navigate() {
+  void _navigate() {
     Get.offAll(const SignInScreen());
   }
 }

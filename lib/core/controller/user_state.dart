@@ -7,12 +7,24 @@ class UserStateController extends GetxController {
   state? _appState;
 
   @override
-  void onInit() async {
+  Future<void> onInit() async {
     super.onInit();
     await initiateState();
     if (getAppState == state.authorize) {
       await initiateUser();
+      await initializeUser();
     }
+  }
+
+  Future<void> initializeUser() async {
+    final userInfo = Get.put(UserController());
+    final userState = Get.put(UserStateController());
+
+    print('userState.getUser!.id ${userState.getUser!.id}');
+
+    userInfo.userInfo = (await UserServices().setUserInfo(
+      userState.getUser!.id!.toString(),
+    ))!;
   }
 
   Widget get setHome {

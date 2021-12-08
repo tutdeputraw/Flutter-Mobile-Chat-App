@@ -29,10 +29,11 @@ class ChatScreenController extends GetxController {
     }
   }
 
-  String getId(String id){
+  String getId(String id) {
     final userController = Get.put(UserStateController());
-    print('userController.getUser!.id.toString(): '+userController.getUser!.id.toString());
-    print('id: '+id);
+    print('userController.getUser!.id.toString(): ' +
+        userController.getUser!.id.toString());
+    print('id: ' + id);
     if (id == userController.getUser!.id.toString()) {
       return userController.getUser!.id.toString();
     } else {
@@ -48,12 +49,18 @@ class ChatScreenController extends GetxController {
     }
   }
 
-  void  addMessage(String friendId) {
+  void addMessage(String friendId) {
     Get.put(ChatController()).addMessage(Messages(
       receiverId: friendId,
       senderId: _getSenderId,
       messageData: [MessageData(text: text.text, userId: _getSenderId)],
     ));
+  }
+
+  String getFriendName(String id) {
+    final friend = Get.put(FriendController());
+
+    return friend.getFriendNameById(id);
   }
 
   bool isFromSender(String senderId) {

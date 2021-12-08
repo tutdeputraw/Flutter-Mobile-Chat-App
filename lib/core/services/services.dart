@@ -1,11 +1,15 @@
-part of '_service.dart';
+import 'dart:convert';
 
-class FriendServices {
-  static const url = 'friend/';
+import 'package:flutter_chat_app/core/models/_model.dart';
+import 'package:http/http.dart' as http;
 
-  static Future<bool> addFriend({required int userId, required int friendId}) async {
+class ApiServices {
+  static const baseURL = 'http://192.168.0.7:3000';
+
+  static Future<bool> addFriend(
+      {required int userId, required int friendId}) async {
     final response = await http.post(
-      Uri.parse(baseURL + url + 'add'),
+      Uri.parse('$baseURL/friend/add'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -15,8 +19,6 @@ class FriendServices {
       }),
     );
 
-    print('response.statusCode:'+response.statusCode.toString());
-
     if (response.statusCode == 201) {
       return true;
     } else {
@@ -25,8 +27,7 @@ class FriendServices {
   }
 
   static Future<List<UserModel>> getFriends({required String userId}) async {
-    print('userId: '+userId);
-    final response = await http.get(Uri.parse(baseURL + url + '?id=' + userId));
+    final response = await http.get(Uri.parse('$baseURL/friend?id=$userId'));
 
     if (response.statusCode == 200) {
       return userModelFromJsonA(response.body);

@@ -10,7 +10,7 @@ class SignUpScreenController extends GetxController {
   }
 
   void signUpOnClick() {
-    SignUpHelper.signUp(
+    Get.put(SignUpController()).signUp(
       username: username.text,
       email: email.text,
       password: password.text,

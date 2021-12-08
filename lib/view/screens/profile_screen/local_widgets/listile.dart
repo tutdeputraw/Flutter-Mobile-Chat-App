@@ -1,11 +1,11 @@
 part of '_local_widgets.dart';
 
-class ProfileListileWidget extends StatelessWidget {
-  Icon leading;
-  String title;
-  Function onTap;
+class ProfileListTileComponent extends StatelessWidget {
+  final Icon leading;
+  final String title;
+  final Function onTap;
 
-  ProfileListileWidget({
+  const ProfileListTileComponent({
     Key? key,
     required this.leading,
     required this.title,

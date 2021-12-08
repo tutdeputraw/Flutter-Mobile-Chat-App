@@ -1,6 +1,6 @@
-part of '_helpers.dart';
+part of '_controller.dart';
 
-class SignInHelper {
+class SignInController extends GetxController {
   void signIn({required String email, required String password}) async {
     final response = await _getResponse(email, password);
     if (response != null) {
@@ -9,14 +9,14 @@ class SignInHelper {
     }
   }
 
-   Future<UserState?> _getResponse(email, password) {
+  Future<UserState?> _getResponse(email, password) {
     return UserServices().signIn(
       email: email,
       password: password,
     );
   }
 
-   void _navigate() {
+  void _navigate() {
     Get.offAll(const InitScreen(
       key: Key('InitScreen'),
     ));

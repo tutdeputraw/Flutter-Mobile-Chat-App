@@ -4,12 +4,8 @@ class SignInScreenController extends GetxController {
   TextEditingController _email = TextEditingController();
   TextEditingController _password = TextEditingController();
 
-  TextEditingController get email => _email;
-
   void signInOnClick() {
-    print('email.text: ' + email.text);
-    print('password.text: ' + password.text);
-    SignInHelper().signIn(
+    Get.put(SignInController()).signIn(
       email: email.text,
       password: password.text,
     );
@@ -24,6 +20,8 @@ class SignInScreenController extends GetxController {
     email = TextEditingController();
     password = TextEditingController();
   }
+
+  TextEditingController get email => _email;
 
   set email(TextEditingController value) {
     _email = value;

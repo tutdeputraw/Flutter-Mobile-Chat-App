@@ -12,12 +12,12 @@ class ChatScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(ChatController());
     final chatController = Get.put(ChatScreenController());
-    print('friendId: ' + friendId);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(chatController.getId(friendId)),
+        title: Text(chatController.getFriendName(friendId)),
       ),
+
       body: GetBuilder(
         init: ChatController(),
         builder: (_) => controller.getMessageData(friendId).isNotEmpty

@@ -22,7 +22,7 @@ class ChatListScreenCardComponent extends StatelessWidget {
         radius: 30,
         backgroundImage: NetworkImage('https://picsum.photos/250?image=28'),
       ),
-      title: Text(controller.getFriendId(data)),
+      title: Text(controller.getFriendName(controller.getFriendId(data))),
       subtitle: Text(controller.getSubtitle(data)),
     );
   }

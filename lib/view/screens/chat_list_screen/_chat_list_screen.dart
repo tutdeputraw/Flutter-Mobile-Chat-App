@@ -11,9 +11,7 @@ class ChatListScreen extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         automaticallyImplyLeading: false,
-        title: Text(
-          'Messages ' + Get.put(UserStateController()).getUser!.id.toString(),
-        ),
+        title: const Text('Messages'),
         actions: [
           IconButton(
             onPressed: () => controller.searchOnClick(context),

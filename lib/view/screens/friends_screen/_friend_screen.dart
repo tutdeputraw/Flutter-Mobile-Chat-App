@@ -28,7 +28,7 @@ class FriendsScreen extends StatelessWidget {
                   controller.friendController.friend[index],
                 ),
               )
-            : const Center(child: Text('You have no friend yet :(')),
+            : const Center(child: Text('You have no friend :(')),
       ),
     );
   }

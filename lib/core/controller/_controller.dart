@@ -35,3 +35,9 @@ part '../../view/screens/chat_screen/chat_screen_controller.dart';
 part 'chat_controller.dart';
 
 part 'user_controller.dart';
+
+part 'sign_up_controller.dart';
+
+part 'sign_in_controller.dart';
+
+part 'sign_out_controller.dart';

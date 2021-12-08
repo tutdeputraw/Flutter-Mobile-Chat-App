@@ -4,6 +4,14 @@ class FriendScreenController extends GetxController {
   final userStateController = Get.put(UserStateController());
   final friendController = Get.put(FriendController());
 
+  @override
+  void onInit() {
+    super.onInit();
+    ever(friendController.friend.obs, (value) {
+      update();
+    });
+  }
+
   void searchNewFriendsOnClick(context) {
     showSearch(
       context: context,

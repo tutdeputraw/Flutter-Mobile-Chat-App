@@ -23,6 +23,19 @@ class WebSocketController extends GetxController {
     }
   }
 
+  void _onMessage(String message) {
+    if (message == 'connected') {
+      connected = true;
+      print('connected: ' + connected.toString());
+    } else if (message == "send:success") {
+      print("Message send success");
+    } else if (message == "send:error") {
+      // Get.snackbar('chat', 'cannot send the message');
+    } else if (message.contains('"cmd":"send"')) {
+      receiveMessage(jsonDecode(message));
+    }
+  }
+
   Future<bool> sendMessage(
       {required String text,
       required String senderId,
@@ -35,33 +48,26 @@ class WebSocketController extends GetxController {
     } else {
       channelConnect();
       print('websocket is not connected');
-      return false;
+      String message =
+          "{'cmd':'send', 'senderId': '$senderId', 'receiverId': '$receiverId', 'text':'$text'}";
+      channel.sink.add(message);
+      return true;
     }
   }
 
-  void _onMessage(String message) {
-    if (message == 'connected') {
-      connected = true;
-      print('connected: ' + connected.toString());
-    } else if (message == "send:success") {
-      print("Message send success");
-    } else if (message == "send:error") {
-      print("Message send error");
-    } else if (message.contains('"cmd":"send"')) {
-      print("Message data");
-      var jsondata = jsonDecode(message);
-      final chat = Get.put(ChatController());
-      chat.addMessage(Messages(
-        senderId: Get.put(UserStateController()).getUser!.id!.toString(),
-        receiverId: jsondata['senderId'],
-        messageData: [
-          MessageData(
-            userId: jsondata['senderId'],
-            text: jsondata['text'],
-          )
-        ],
-      ));
-    }
+  void receiveMessage(jsonData) {
+    final chat = Get.put(ChatController());
+
+    chat.addMessage(Messages(
+      senderId: Get.put(UserStateController()).getUser!.id!.toString(),
+      receiverId: jsonData['senderId'],
+      messageData: [
+        MessageData(
+          userId: jsonData['senderId'],
+          text: jsonData['text'],
+        )
+      ],
+    ));
   }
 
   int? get getUserId {
@@ -78,7 +84,7 @@ class WebSocketController extends GetxController {
     print(error.toString());
   }
 
-  String get _getURL => 'ws://192.168.0.6:6060/$getUserId';
+  String get _getURL => 'ws://192.168.0.7:6060/$getUserId';
 
   IOWebSocketChannel get channel => _channel;
 

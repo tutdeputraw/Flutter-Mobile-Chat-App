@@ -4,11 +4,10 @@ class InitScreenController extends GetxController {
   int _page = 0;
 
   @override
-  void onInit() {
+  void onInit() async {
     super.onInit();
-    ApiHelper.initializeFriends();
-    ApiHelper.initializeUser();
 
+    Get.put(UserStateController());
     Get.put(WebSocketController());
     Get.put(ChatController());
     Get.put(ProfileScreenController());

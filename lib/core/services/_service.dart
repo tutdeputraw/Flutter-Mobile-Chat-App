@@ -6,4 +6,4 @@ import 'package:http/http.dart' as http;
 part 'user_services.dart';
 part 'friend_services.dart';
 
-const baseURL = 'http://192.168.0.6:3000/';
+const baseURL = 'http://192.168.0.7:3000/';
