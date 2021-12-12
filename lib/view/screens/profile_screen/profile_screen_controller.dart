@@ -13,8 +13,12 @@ class ProfileScreenController extends GetxController {
     );
   }
 
-  String getUsername() {
-    return Get.put(UserController()).userInfo.username;
+  String get getUsername {
+    return Get.find<UserController>().userInfo.username;
+  }
+
+  String get getImageUrl {
+    return Get.find<UserController>().userInfo.imageUrl!;
   }
 
   void settingsOnClick() {}

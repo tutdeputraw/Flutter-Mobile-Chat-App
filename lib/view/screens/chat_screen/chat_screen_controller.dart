@@ -2,6 +2,7 @@ part of '../../../core/controller/_controller.dart';
 
 class ChatScreenController extends GetxController {
   TextEditingController _text = TextEditingController();
+  ScrollController _scrollController = ScrollController();
 
   List<MessageData>? getMessages(UserModel friend) {
     return Get.put(ChatController()).messages.singleWhere((element) {
@@ -16,6 +17,16 @@ class ChatScreenController extends GetxController {
       return BubbleType.sendBubble;
     } else {
       return BubbleType.receiverBubble;
+    }
+  }
+
+  Color getBackgroundColor(MessageData data) {
+    final userController = Get.put(UserStateController());
+
+    if (data.userId == userController.getUser!.id.toString()) {
+      return Colors.white;
+    } else {
+      return Colors.cyan[300]!;
     }
   }
 
@@ -42,19 +53,37 @@ class ChatScreenController extends GetxController {
   }
 
   void sendOnClick(String friendId) async {
+    autoScrollToTheEndOfTheScreen();
     if (await sendMessage(friendId)) {
       addMessage(friendId);
     } else {
       Get.snackbar('chat', 'cannot send the message');
     }
+    removeText();
+  }
+
+  void autoScrollToTheEndOfTheScreen() {
+    scrollController.animateTo(
+      scrollController.position.maxScrollExtent + 1000,
+      curve: Curves.easeOut,
+      duration: const Duration(milliseconds: 300),
+    );
+  }
+
+  void removeText() {
+    text.text = '';
+    update();
   }
 
   void addMessage(String friendId) {
-    Get.put(ChatController()).addMessage(Messages(
-      receiverId: friendId,
-      senderId: _getSenderId,
-      messageData: [MessageData(text: text.text, userId: _getSenderId)],
-    ));
+    Get.put(ChatController()).addMessage(
+      Messages(
+        receiverId: friendId,
+        senderId: _getSenderId,
+        messageData: [MessageData(text: text.text, userId: _getSenderId)],
+        dateTime: DateTime.now(),
+      ),
+    );
   }
 
   String getFriendName(String id) {
@@ -83,6 +112,13 @@ class ChatScreenController extends GetxController {
 
   set text(TextEditingController value) {
     _text = value;
+    update();
+  }
+
+  ScrollController get scrollController => _scrollController;
+
+  set scrollController(ScrollController value) {
+    _scrollController = value;
     update();
   }
 }

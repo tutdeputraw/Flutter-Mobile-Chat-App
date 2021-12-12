@@ -11,14 +11,6 @@ class ProfileScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Profile'),
         automaticallyImplyLeading: false,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.more_vert_rounded,
-            ),
-          )
-        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -26,16 +18,16 @@ class ProfileScreen extends StatelessWidget {
           children: [
             Container(
               padding: const EdgeInsets.all(16),
-              child: const CircleAvatar(
+              child: CircleAvatar(
                 backgroundImage: NetworkImage(
-                  'https://picsum.photos/250?image=25',
+                  controller.getImageUrl,
                 ),
                 radius: 50,
               ),
             ),
             Container(
               alignment: Alignment.center,
-              child: Text(controller.getUsername()),
+              child: Text(controller.getUsername),
             ),
             Container(
               padding: const EdgeInsets.all(16),

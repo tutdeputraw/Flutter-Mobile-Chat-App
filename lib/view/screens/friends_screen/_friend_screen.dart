@@ -24,8 +24,9 @@ class FriendsScreen extends StatelessWidget {
         builder: (_) => controller.friendController.friend.isNotEmpty
             ? ListView.builder(
                 itemCount: controller.friendController.friend.length,
-                itemBuilder: (context, index) => _card(
-                  controller.friendController.friend[index],
+                itemBuilder: (context, index) => FriendCardWidget(
+                  data: controller.friendController.friend[index],
+                  onTap: null,
                 ),
               )
             : const Center(child: Text('You have no friend :(')),
@@ -37,6 +38,9 @@ class FriendsScreen extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 6),
       child: ListTile(
+        leading: CircleAvatar(
+          backgroundImage: NetworkImage(data.imageUrl!),
+        ),
         tileColor: Colors.white,
         title: Text(data.username),
       ),

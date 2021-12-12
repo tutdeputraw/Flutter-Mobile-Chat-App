@@ -65,8 +65,9 @@ class WebSocketController extends GetxController {
         MessageData(
           userId: jsonData['senderId'],
           text: jsonData['text'],
-        )
+        ),
       ],
+      dateTime: DateTime.now(),
     ));
   }
 

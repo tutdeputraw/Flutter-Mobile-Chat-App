@@ -31,4 +31,10 @@ class FriendController extends GetxController {
       return element.id.toString() == id;
     }).username;
   }
+
+  UserModel getUserById(String id) {
+    return friend.singleWhere((element) {
+      return element.id.toString() == id;
+    });
+  }
 }

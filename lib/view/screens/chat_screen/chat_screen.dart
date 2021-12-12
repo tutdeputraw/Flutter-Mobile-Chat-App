@@ -1,11 +1,11 @@
 part of '../../screens/_screen.dart';
 
 class ChatScreen extends StatelessWidget {
-  final String friendId;
+  final UserModel friend;
 
   const ChatScreen({
     Key? key,
-    required this.friendId,
+    required this.friend,
   }) : super(key: key);
 
   @override
@@ -15,16 +15,49 @@ class ChatScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(chatController.getFriendName(friendId)),
+        titleSpacing: 0,
+        title: Row(
+          children: [
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 8),
+              child: InkWell(
+                borderRadius: BorderRadius.circular(24),
+                onTap: () => Get.back(),
+                child: Container(
+                  padding: const EdgeInsets.all(5),
+                  child: Row(
+                    children: [
+                      const Icon(
+                        Icons.arrow_back_outlined,
+                      ),
+                      CircleAvatar(
+                        radius: 15,
+                        backgroundImage: NetworkImage(
+                          friend.imageUrl!,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Text(chatController.getFriendName(friend.id.toString())),
+          ],
+        ),
+        automaticallyImplyLeading: false,
       ),
       body: GetBuilder(
         init: ChatController(),
-        builder: (_) => controller.getMessageData(friendId).isNotEmpty
+        builder: (_) => controller
+                .getMessageData(friend.id.toString())
+                .isNotEmpty
             ? ListView.separated(
+                controller: chatController.scrollController,
                 padding: const EdgeInsets.all(16),
-                itemCount: controller.getMessageData(friendId).length,
+                itemCount:
+                    controller.getMessageData(friend.id.toString()).length,
                 itemBuilder: (context, index) => ChatScreenCardComponent(
-                  data: controller.getMessageData(friendId)[index],
+                  data: controller.getMessageData(friend.id.toString())[index],
                 ),
                 separatorBuilder: (context, index) => const Divider(
                   height: 16,
@@ -35,7 +68,7 @@ class ChatScreen extends StatelessWidget {
       ),
       bottomNavigationBar: ChatBarComponent(
         key: const Key('ChatBar'),
-        friendId: friendId,
+        friendId: friend.id.toString(),
       ),
     );
   }

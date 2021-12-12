@@ -3,10 +3,12 @@ part of '_model.dart';
 class UserModel {
   int id;
   String username;
+  String? imageUrl;
 
   UserModel({
     this.id = -1,
     this.username = '',
+    this.imageUrl,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
@@ -20,12 +22,14 @@ class UserModel {
     return UserModel(
       id: json["user"]["id"],
       username: json["user"]["username"],
+      imageUrl: json["user"]["imageUrl"],
     );
   }
 
   factory UserModel.setUserInfo(Map<String, dynamic> json) {
     return UserModel(
       username: json["username"],
+      imageUrl: json["imageUrl"],
     );
   }
 

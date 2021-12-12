@@ -7,12 +7,18 @@ class ChatListScreenController extends GetxController {
     return chatController.messages;
   }
 
+  String getImageURL(Messages data) {
+    final controller = Get.put(FriendController());
+    return controller.getUserById(data.receiverId).imageUrl!;
+  }
+
   void fabOnClick() {
     Get.to(const NewChatScreen(key: Key('NewChatScreen')));
   }
 
   void cardOnCLick(String friendId) {
-    Get.to(ChatScreen(friendId: friendId));
+    final controller = Get.put(FriendController());
+    Get.to(ChatScreen(friend: controller.getUserById(friendId)));
   }
 
   String getFriendId(Messages data) {

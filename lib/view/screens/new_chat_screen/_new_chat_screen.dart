@@ -16,8 +16,13 @@ class NewChatScreen extends StatelessWidget {
         builder: (_) => controller.friend.isNotEmpty
             ? ListView.builder(
                 itemCount: controller.friend.length,
-                itemBuilder: (context, index) => _card(
+                itemBuilder: (context, index) => FriendCardWidget(
                   data: controller.friend[index],
+                  onTap: () {
+                    Get.off(ChatScreen(
+                      friend: controller.friend[index],
+                    ));
+                  },
                 ),
               )
             : const Text('You have no friend:('),
@@ -25,20 +30,20 @@ class NewChatScreen extends StatelessWidget {
     );
   }
 
-  Widget _card({required UserModel data}) {
-    return InkWell(
-      onTap: () {
-        Get.off(ChatScreen(
-          friendId: data.id.toString(),
-        ));
-      },
-      child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 6),
-        child: ListTile(
-          tileColor: Colors.white,
-          title: Text(data.username),
-        ),
-      ),
-    );
-  }
+  // Widget _card({required UserModel data}) {
+  //   return InkWell(
+  //     onTap: () {
+  //       Get.off(ChatScreen(
+  //         friend: data.id.toString(),
+  //       ));
+  //     },
+  //     child: Container(
+  //       margin: const EdgeInsets.symmetric(vertical: 6),
+  //       child: ListTile(
+  //         tileColor: Colors.white,
+  //         title: Text(data.username),
+  //       ),
+  //     ),
+  //   );
+  // }
 }
