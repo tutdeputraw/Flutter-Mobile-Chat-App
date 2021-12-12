@@ -52,6 +52,10 @@ class ChatController extends GetxController {
     }
   }
 
+  int getMessageIndexByUserId(String id) {
+    return messages.indexWhere((element) => element.receiverId == id);
+  }
+
   List<Messages> get messages => _messages;
 
   set messages(List<Messages> value) {

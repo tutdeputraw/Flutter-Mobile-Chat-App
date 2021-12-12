@@ -21,9 +21,11 @@ class ProfileScreenController extends GetxController {
     return Get.find<UserController>().userInfo.imageUrl!;
   }
 
-  void settingsOnClick() {}
+  void settingsOnClick() {
+    Get.to(() => const SettingsScreen());
+  }
 
   void editProfileOnClick() {
-    Get.to(const EditProfileScreen(key: Key('EditProfileScreen')));
+    Get.to(() => const EditProfileScreen(key: Key('EditProfileScreen')));
   }
 }

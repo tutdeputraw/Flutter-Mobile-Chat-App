@@ -2,6 +2,7 @@ part of '../../../core/controller/_controller.dart';
 
 class ChatListScreenController extends GetxController {
   final chatController = Get.put(ChatController());
+  final friendController = Get.put(FriendController());
 
   List<Messages> get getMessages {
     return chatController.messages;
@@ -18,7 +19,9 @@ class ChatListScreenController extends GetxController {
 
   void cardOnCLick(String friendId) {
     final controller = Get.put(FriendController());
-    Get.to(ChatScreen(friend: controller.getUserById(friendId)));
+    Get.to(ChatScreen(
+      friend: controller.getUserById(friendId),
+    ));
   }
 
   String getFriendId(Messages data) {
@@ -44,15 +47,14 @@ class ChatListScreenController extends GetxController {
   void searchOnClick(context) {
     showSearch(
       context: context,
-      delegate: SearchPage(
-        items: [],
+      delegate: SearchPage<Messages>(
+        items: getMessages,
         searchLabel: 'Search Chat',
-        builder: (person) => const ListTile(
-          title: Text('person.name'),
-          subtitle: Text('person.surname'),
-          trailing: Text('person.age yo'),
+        builder: (person) => ChatListScreenCardComponent(
+          data: getMessages[
+              chatController.getMessageIndexByUserId(person.receiverId)],
         ),
-        filter: (t) => [''],
+        filter: (t) => [friendController.getFriendNameById(t.receiverId)],
       ),
     );
   }

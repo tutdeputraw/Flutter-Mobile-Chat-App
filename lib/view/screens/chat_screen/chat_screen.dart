@@ -18,29 +18,27 @@ class ChatScreen extends StatelessWidget {
         titleSpacing: 0,
         title: Row(
           children: [
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 8),
-              child: InkWell(
-                borderRadius: BorderRadius.circular(24),
-                onTap: () => Get.back(),
-                child: Container(
-                  padding: const EdgeInsets.all(5),
-                  child: Row(
-                    children: [
-                      const Icon(
-                        Icons.arrow_back_outlined,
+            InkWell(
+              borderRadius: BorderRadius.circular(24),
+              onTap: () => Get.back(),
+              child: Container(
+                padding: const EdgeInsets.all(2),
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.arrow_back_outlined,
+                    ),
+                    CircleAvatar(
+                      radius: 15,
+                      backgroundImage: NetworkImage(
+                        friend.imageUrl!,
                       ),
-                      CircleAvatar(
-                        radius: 15,
-                        backgroundImage: NetworkImage(
-                          friend.imageUrl!,
-                        ),
-                      )
-                    ],
-                  ),
+                    )
+                  ],
                 ),
               ),
             ),
+            const SizedBox(width: 5),
             Text(chatController.getFriendName(friend.id.toString())),
           ],
         ),

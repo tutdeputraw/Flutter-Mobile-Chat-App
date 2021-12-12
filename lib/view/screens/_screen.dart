@@ -35,3 +35,4 @@ part 'chat_screen/chat_screen.dart';
 part 'chat_list_screen/components/card.dart';
 
 part 'chat_screen/components/chat_card.dart';
+part 'settings_screen/_settings_screens.dart';

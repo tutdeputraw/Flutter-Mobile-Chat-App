@@ -63,11 +63,11 @@ class ChatScreenController extends GetxController {
   }
 
   void autoScrollToTheEndOfTheScreen() {
-    scrollController.animateTo(
-      scrollController.position.maxScrollExtent + 1000,
-      curve: Curves.easeOut,
-      duration: const Duration(milliseconds: 300),
-    );
+    // scrollController.animateTo(
+    //   scrollController.position.maxScrollExtent + 1000,
+    //   curve: Curves.easeOut,
+    //   duration: const Duration(milliseconds: 300),
+    // );
   }
 
   void removeText() {
