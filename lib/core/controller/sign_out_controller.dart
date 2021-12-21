@@ -3,7 +3,7 @@ part of '_controller.dart';
 class SignOutController extends GetxController {
   void signOut(String id) async {
     if (await _getResponse(id)) {
-      UserSessionHelper.clear();
+      UserSession.clear();
       _navigate();
       _releaseController();
     }

@@ -1,6 +1,6 @@
-part of '_helpers.dart';
+part of '_database.dart';
 
-class UserSessionHelper {
+class UserSession {
   static final Future<SharedPreferences> _prefs =
       SharedPreferences.getInstance();
 

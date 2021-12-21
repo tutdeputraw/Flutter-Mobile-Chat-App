@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/view/widgets/search_bar.dart';
 import 'package:flutter_chat_bubble/bubble_type.dart';
 import 'package:get/get.dart';
-import 'package:flutter_chat_app/core/helpers/_helpers.dart';
+import 'package:flutter_chat_app/core/database/_database.dart';
 import 'package:flutter_chat_app/view/screens/_screen.dart';
 import 'package:flutter_chat_app/core/models/_model.dart';
 import 'package:search_page/search_page.dart';

@@ -7,11 +7,13 @@ class InitScreenController extends GetxController {
   void onInit() async {
     super.onInit();
 
-    Get.put(UserStateController());
+    await Get.put(UserStateController()).onInit();
+    await Get.put(FriendController()).initializeFriends();
+
     Get.put(WebSocketController());
-    Get.put(ChatController());
-    Get.put(ProfileScreenController());
-    Get.put(FriendScreenController());
+    // Get.put(ChatController());
+    // Get.put(ProfileScreenController());
+    // Get.put(FriendScreenController());
   }
 
   Widget showScreen() {

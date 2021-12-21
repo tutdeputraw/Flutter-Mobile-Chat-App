@@ -14,6 +14,7 @@ class FriendController extends GetxController {
     print('userStateController.getUser!.id!.toString(): ' +
         userStateController.getUser!.id!.toString());
 
+    print('Future<void> initializeFriends() async {');
     friend = await FriendServices.getFriends(
       userId: userStateController.getUser!.id!.toString(),
     );

@@ -11,6 +11,7 @@ class UserStateController extends GetxController {
     super.onInit();
     await initiateState();
     if (getAppState == state.authorize) {
+      print('userstate Future<void> onInit() async {');
       await initiateUser();
       await initializeUser();
     }
@@ -45,12 +46,12 @@ class UserStateController extends GetxController {
   }
 
   Future initiateUser() async {
-    final user = await UserSessionHelper.getUser();
+    final user = await UserSession.getUser();
     setUser = user!;
   }
 
   Future initiateState() async {
-    if (await UserSessionHelper.isContainUser()) {
+    if (await UserSession.isContainUser()) {
       setAppState = state.authorize;
     } else {
       setAppState = state.unauthorize;
